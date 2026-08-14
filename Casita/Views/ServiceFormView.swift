@@ -51,7 +51,7 @@ struct ServiceFormView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Name — e.g. Raúl the plumber", text: $name)
+                    TextField("Name — e.g. Ray the plumber", text: $name)
                         .font(.body)
                 } header: {
                     Text("Who is it?")
@@ -72,7 +72,7 @@ struct ServiceFormView: View {
                 } header: {
                     Text("Phone")
                 } footer: {
-                    Text("Include the country code so WhatsApp works, e.g. +54 11 5555 1234")
+                    Text("Include the country code so WhatsApp works, e.g. +1 305 555 1234")
                 }
 
                 Section {

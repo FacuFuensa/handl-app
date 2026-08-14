@@ -32,7 +32,8 @@ jobs:
 
       - name: Show compile errors on failure
         if: failure()
-        run: grep -E ' error:| warning: .*deprecat' xcodebuild.log | head -n 60 || echo "no error lines matched — see full log artifact"
+        run: |
+          grep -E ' error:' xcodebuild.log | head -n 60 || echo "no error lines matched - see full log artifact"
 
       - name: Upload full build log
         if: failure()
