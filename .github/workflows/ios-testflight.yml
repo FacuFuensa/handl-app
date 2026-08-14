@@ -53,6 +53,10 @@ jobs:
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
           set -o pipefail
+          # xcodebuild echoes its own argv, so the anon key would land in the
+          # log verbatim. Redact it before anything is written to disk —
+          # GitHub only masks the console stream, not files we upload.
+          redact () { sed -e "s|$SUPABASE_ANON_KEY|<redacted>|g"; }
           xcodebuild archive \
             -project Casita.xcodeproj \
             -scheme Casita \
@@ -68,7 +72,7 @@ jobs:
             CURRENT_PROJECT_VERSION="${{ github.run_number }}.${{ github.run_attempt }}" \
             SUPABASE_URL="$SUPABASE_URL" \
             SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY" \
-            2>&1 | tee archive.log | tail -n 120
+            2>&1 | redact | tee archive.log | tail -n 120
 
       - name: Upload to App Store Connect
         env:
