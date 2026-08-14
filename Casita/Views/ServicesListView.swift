@@ -41,38 +41,10 @@ struct ServicesListView: View {
         }
         .background(Theme.background)
         .navigationTitle(model.household?.name ?? "Casita")
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    showingHousehold = true
-                } label: {
-                    Image(systemName: "person.2.fill")
-                        .font(.body.weight(.semibold))
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
-                }
-                .accessibilityLabel(Text("Household and members"))
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    showingSettings = true
-                } label: {
-                    Image(systemName: "gearshape.fill")
-                        .font(.body.weight(.semibold))
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
-                }
-                .accessibilityLabel(Text("Settings"))
-            }
-        }
-        .safeAreaInset(edge: .bottom) {
-            BigButton(title: "Add service", systemImage: "plus") {
-                showingForm = true
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 8)
-            .padding(.top, 4)
-            .background(.ultraThinMaterial)
+        .modifier(HomeToolbar(showingHousehold: $showingHousehold, showingSettings: $showingSettings))
+        .overlay(alignment: .bottom) {
+            addServiceIsland
+                .padding(.bottom, 10)
         }
         .sheet(isPresented: $showingForm) { ServiceFormView(mode: .add) }
         .sheet(isPresented: $showingHousehold) { HouseholdView() }
@@ -114,7 +86,46 @@ struct ServicesListView: View {
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
+            .contentMargins(.bottom, 92, for: .scrollContent)
         }
+    }
+
+    /// Floating island CTA: Liquid Glass on iOS 26, solid terracotta before.
+    private var addServiceIsland: some View {
+        Group {
+            if #available(iOS 26.0, *) {
+                Button {
+                    showingForm = true
+                } label: {
+                    islandLabel
+                }
+                .buttonStyle(.glassProminent)
+                .buttonBorderShape(.capsule)
+                .tint(Theme.terracottaFill)
+            } else {
+                Button {
+                    showingForm = true
+                } label: {
+                    islandLabel
+                        .foregroundStyle(.white)
+                        .background(Theme.terracottaFill, in: Capsule())
+                        .shadow(color: .black.opacity(0.18), radius: 14, y: 6)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    private var islandLabel: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "plus")
+                .font(.headline)
+                .accessibilityHidden(true)
+            Text("Add service")
+                .font(.system(.headline, design: .rounded))
+        }
+        .padding(.horizontal, 22)
+        .frame(minHeight: 52)
     }
 
     private var searchField: some View {
@@ -210,6 +221,71 @@ struct ServicesListView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+/// The two nav-bar buttons as interactive Liquid Glass circles on iOS 26
+/// (system glass grouping hidden so the circles don't double up); plain
+/// 44pt toolbar buttons before iOS 26.
+private struct HomeToolbar: ViewModifier {
+    @Binding var showingHousehold: Bool
+    @Binding var showingSettings: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showingHousehold = true
+                    } label: {
+                        Image(systemName: "person.2.fill")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 44, height: 44)
+                    }
+                    .glassEffect(.regular.interactive(), in: Circle())
+                    .accessibilityLabel(Text("Household and members"))
+                }
+                .sharedBackgroundVisibility(.hidden)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 44, height: 44)
+                    }
+                    .glassEffect(.regular.interactive(), in: Circle())
+                    .accessibilityLabel(Text("Settings"))
+                }
+                .sharedBackgroundVisibility(.hidden)
+            }
+        } else {
+            content.toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showingHousehold = true
+                    } label: {
+                        Image(systemName: "person.2.fill")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel(Text("Household and members"))
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .accessibilityLabel(Text("Settings"))
+                }
+            }
+        }
     }
 }
 
