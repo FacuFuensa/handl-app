@@ -1,0 +1,300 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Account" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Cuenta" } } }
+    },
+    "Add service" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Agregar servicio" } } }
+    },
+    "Add the people who help around the house — plumber, electrician, gardener — with their phone numbers." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Agregá a las personas que ayudan en la casa — plomero, electricista, jardinero — con sus teléfonos." } } }
+    },
+    "Address" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Dirección" } } }
+    },
+    "Address (optional)" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Dirección (opcional)" } } }
+    },
+    "Air conditioning" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Aire acondicionado" } } }
+    },
+    "All" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Todos" } } }
+    },
+    "Almost done! Open the confirmation email we sent you, then come back and sign in." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Ya casi está! Abrí el correo de confirmación que te mandamos y después volvé a iniciar sesión." } } }
+    },
+    "Already have an account? Sign in" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Ya tenés cuenta? Iniciá sesión" } } }
+    },
+    "A household is where your family keeps its services and phone numbers. Create one, or join the one your family already made." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Un hogar es donde tu familia guarda sus servicios y teléfonos. Creá uno, o unite al que tu familia ya armó." } } }
+    },
+    "Appliances" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Electrodomésticos" } } }
+    },
+    "Ask your family member for the household code and type it here." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Pedile el código del hogar a tu familiar y escribilo acá." } } }
+    },
+    "Builder" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Albañil" } } }
+    },
+    "Call" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Llamar" } } }
+    },
+    "Call %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Llamar a %@" } } }
+    },
+    "Cancel" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar" } } }
+    },
+    "Car" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Auto" } } }
+    },
+    "Casita" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Casita" } } }
+    },
+    "Casita %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Casita %@" } } }
+    },
+    "Category" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Categoría" } } }
+    },
+    "Cleaning" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Limpieza" } } }
+    },
+    "Clear search" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Borrar búsqueda" } } }
+    },
+    "CODE" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "CÓDIGO" } } }
+    },
+    "Could not create the household. Try again." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo crear el hogar. Probá de nuevo." } } }
+    },
+    "Couldn't load your information" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "No pudimos cargar tu información" } } }
+    },
+    "Create a household" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Crear un hogar" } } }
+    },
+    "Create account" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Crear cuenta" } } }
+    },
+    "Create household" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Crear hogar" } } }
+    },
+    "Delete" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar" } } }
+    },
+    "Delete service" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar servicio" } } }
+    },
+    "Delete this service?" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Eliminar este servicio?" } } }
+    },
+    "Demo mode — changes are not saved" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Modo demostración — los cambios no se guardan" } } }
+    },
+    "Done" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Listo" } } }
+    },
+    "Don't have an account? Create one" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿No tenés cuenta? Creá una" } } }
+    },
+    "Edit" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Editar" } } }
+    },
+    "Edit service" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Editar servicio" } } }
+    },
+    "Electrician" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Electricista" } } }
+    },
+    "Email" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Correo electrónico" } } }
+    },
+    "Garden" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Jardín" } } }
+    },
+    "Gas" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Gasista" } } }
+    },
+    "Give your household a name. Anything works — you can change it later." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Ponele un nombre a tu hogar. Cualquiera sirve — lo podés cambiar después." } } }
+    },
+    "Health" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Salud" } } }
+    },
+    "Hi, %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Hola, %@" } } }
+    },
+    "Home" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Casa" } } }
+    },
+    "Household and members" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Hogar e integrantes" } } }
+    },
+    "Household code" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Código del hogar" } } }
+    },
+    "Include the country code so WhatsApp works, e.g. +54 11 5555 1234" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Incluí el código de país para que funcione WhatsApp, ej. +54 11 5555 1234" } } }
+    },
+    "Internet & TV" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Internet y TV" } } }
+    },
+    "Invite your family" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Invitá a tu familia" } } }
+    },
+    "Join household" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Unirse al hogar" } } }
+    },
+    "Join our home in Casita! Household code: %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Sumate a nuestro hogar en Casita! Código: %@" } } }
+    },
+    "Join with a code" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Unirse con un código" } } }
+    },
+    "Leave" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Salir" } } }
+    },
+    "Leave household" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Salir del hogar" } } }
+    },
+    "Leave this household? You can rejoin later with the code." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Salir de este hogar? Podés volver a entrar con el código." } } }
+    },
+    "Locksmith" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrajero" } } }
+    },
+    "Member" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Integrante" } } }
+    },
+    "Members" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Integrantes" } } }
+    },
+    "More details" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Más detalles" } } }
+    },
+    "Name — e.g. Raúl the plumber" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Nombre — ej. Raúl el plomero" } } }
+    },
+    "New household" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Nuevo hogar" } } }
+    },
+    "New service" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Nuevo servicio" } } }
+    },
+    "No connection. Check your internet and try again." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin conexión. Revisá tu internet y probá de nuevo." } } }
+    },
+    "No household found with that code. Check it and try again." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "No hay ningún hogar con ese código. Revisalo y probá de nuevo." } } }
+    },
+    "No services yet" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Todavía no hay servicios" } } }
+    },
+    "Notes" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Notas" } } }
+    },
+    "Notes (optional) — prices, schedules, who recommended them…" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Notas (opcional) — precios, horarios, quién lo recomendó…" } } }
+    },
+    "Nothing matches your search" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "No hay resultados para tu búsqueda" } } }
+    },
+    "Other" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Otros" } } }
+    },
+    "Painter" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Pintor" } } }
+    },
+    "Password" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Contraseña" } } }
+    },
+    "Phone" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Teléfono" } } }
+    },
+    "Phone number" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Número de teléfono" } } }
+    },
+    "Plumber" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Plomero" } } }
+    },
+    "Save" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar" } } }
+    },
+    "Save name" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar nombre" } } }
+    },
+    "Saved" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardado" } } }
+    },
+    "Search by name or trade" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Buscar por nombre u oficio" } } }
+    },
+    "Settings" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } } }
+    },
+    "Share code" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Compartir código" } } }
+    },
+    "Share this code with your family so they can join:" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Compartí este código con tu familia para que se sumen:" } } }
+    },
+    "Sign in" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Iniciar sesión" } } }
+    },
+    "Sign out" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar sesión" } } }
+    },
+    "Sign out of Casita?" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Cerrar sesión de Casita?" } } }
+    },
+    "Start fresh and invite your family with a code" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Empezá de cero e invitá a tu familia con un código" } } }
+    },
+    "That email address doesn't look right." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Ese correo no parece válido." } } }
+    },
+    "The password is too short. Use at least 6 characters." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "La contraseña es muy corta. Usá al menos 6 caracteres." } } }
+    },
+    "There is already an account with that email. Try signing in." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Ya existe una cuenta con ese correo. Probá iniciar sesión." } } }
+    },
+    "They use WhatsApp" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Usa WhatsApp" } } }
+    },
+    "This is how your family sees you in the household." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Así te ve tu familia en el hogar." } } }
+    },
+    "Try again" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Reintentar" } } }
+    },
+    "Type the 6-letter code someone shared with you" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Escribí el código de 6 letras que te compartieron" } } }
+    },
+    "WhatsApp" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "WhatsApp" } } }
+    },
+    "Who is it?" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Quién es?" } } }
+    },
+    "Wrong email or password." : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "El correo o la contraseña no son correctos." } } }
+    },
+    "You" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Vos" } } }
+    },
+    "Your home's services and phone numbers, shared with your family" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Los servicios y teléfonos de tu casa, compartidos con tu familia" } } }
+    },
+    "Your name" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Tu nombre" } } }
+    }
+  },
+  "version" : "1.0"
+}

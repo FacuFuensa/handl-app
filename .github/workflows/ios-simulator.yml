@@ -1,0 +1,93 @@
+name: iOS Simulator Build + Screenshots
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build for simulator (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project Casita.xcodeproj \
+            -scheme Casita \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee xcodebuild.log | tail -n 100
+
+      - name: Show compile errors on failure
+        if: failure()
+        run: grep -E ' error:| warning: .*deprecat' xcodebuild.log | head -n 60 || echo "no error lines matched — see full log artifact"
+
+      - name: Upload full build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcodebuild-log
+          path: xcodebuild.log
+
+      - name: Verify simulator product
+        run: |
+          APP="build/Build/Products/Debug-iphonesimulator/Casita.app"
+          if [ ! -d "$APP" ]; then
+            echo "::error::Simulator .app not found at $APP"
+            find build/Build/Products -maxdepth 2 -name "*.app" || true
+            exit 1
+          fi
+          echo "Built: $APP"
+
+      - name: Boot simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | grep -oE "[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}" || true)
+          if [ -z "$UDID" ]; then
+            echo "::error::No available iPhone simulator found"
+            xcrun simctl list devices available
+            exit 1
+          fi
+          echo "Using simulator $UDID"
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Install app
+        run: xcrun simctl install "${{ steps.sim.outputs.udid }}" build/Build/Products/Debug-iphonesimulator/Casita.app
+
+      - name: Capture screenshots
+        run: |
+          UDID="${{ steps.sim.outputs.udid }}"
+          mkdir -p shots
+          shoot () { # $1 = language, $2 = screen
+            xcrun simctl launch "$UDID" com.facufuensa.casita \
+              -CasitaDemo -CasitaScreen "$2" -AppleLanguages "($1)"
+            sleep 6
+            xcrun simctl io "$UDID" screenshot "shots/$1-$2.png"
+            xcrun simctl terminate "$UDID" com.facufuensa.casita || true
+            sleep 1
+          }
+          for screen in auth gate home detail form household; do
+            shoot en "$screen"
+          done
+          ls -la shots
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: shots/
+          if-no-files-found: error
