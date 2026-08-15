@@ -228,6 +228,11 @@ struct ServicesListView: View {
 /// (system glass grouping hidden so the circles don't double up); plain
 /// 44pt toolbar buttons before iOS 26.
 private struct HomeToolbar: ViewModifier {
+    /// 44pt (Apple's minimum) reads small next to the large title, and the
+    /// glass ring is barely visible at that size. The nav bar accommodates
+    /// this without clipping.
+    static let glassSize: CGFloat = 52
+
     @Binding var showingHousehold: Bool
     @Binding var showingSettings: Bool
 
@@ -240,8 +245,8 @@ private struct HomeToolbar: ViewModifier {
                         showingHousehold = true
                     } label: {
                         Image(systemName: "person.2.fill")
-                            .font(.body.weight(.semibold))
-                            .frame(width: 44, height: 44)
+                            .font(.title3.weight(.semibold))
+                            .frame(width: Self.glassSize, height: Self.glassSize)
                     }
                     .glassEffect(.regular.interactive(), in: Circle())
                     .accessibilityLabel(Text("Household and members"))
@@ -252,8 +257,8 @@ private struct HomeToolbar: ViewModifier {
                         showingSettings = true
                     } label: {
                         Image(systemName: "gearshape.fill")
-                            .font(.body.weight(.semibold))
-                            .frame(width: 44, height: 44)
+                            .font(.title3.weight(.semibold))
+                            .frame(width: Self.glassSize, height: Self.glassSize)
                     }
                     .glassEffect(.regular.interactive(), in: Circle())
                     .accessibilityLabel(Text("Settings"))
