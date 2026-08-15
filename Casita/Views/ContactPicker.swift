@@ -63,9 +63,18 @@ struct ContactPicker: UIViewControllerRepresentable {
         // the user always sees which number they are choosing. People commonly
         // have a mobile and a landline saved together.
         picker.predicateForSelectionOfContact = NSPredicate(value: false)
-        // Only a phone row comes back through the delegate.
-        picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'")
+        // Only a phone row comes back through the delegate. Built from the SDK
+        // constant rather than a literal: much community code writes the
+        // singular 'phoneNumber', which never matches and silently falls back
+        // to the default behaviour.
+        picker.predicateForSelectionOfProperty = NSPredicate(
+            format: "key == %@", CNContactPhoneNumbersKey
+        )
         picker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count > 0")
+        // Swiping the sheet down fires no picker delegate callback at all —
+        // contactPickerDidCancel is only sent when Cancel is tapped. Without
+        // this the latch below stays set and the button never opens again.
+        picker.presentationController?.delegate = context.coordinator
 
         // The host may not be in the window yet on the first layout pass.
         let coordinator = context.coordinator
@@ -81,13 +90,19 @@ struct ContactPicker: UIViewControllerRepresentable {
 
     /// Only the single-property callback is implemented on purpose: adding
     /// either plural variant silently switches the picker to multi-select.
-    final class Coordinator: NSObject, CNContactPickerDelegate {
+    final class Coordinator: NSObject, CNContactPickerDelegate,
+                             UIAdaptivePresentationControllerDelegate {
         var onPick: (String, String) -> Void = { _, _ in }
         var onFinish: () -> Void = {}
         var isShowing = false
 
         /// The picker dismisses itself; dismissing it here too breaks it.
         func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+            finish()
+        }
+
+        /// Sent when the sheet is swiped away instead of cancelled.
+        func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
             finish()
         }
 
