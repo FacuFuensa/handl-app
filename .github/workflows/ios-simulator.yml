@@ -51,6 +51,14 @@ jobs:
             exit 1
           fi
           echo "Built: $APP"
+          # The privacy manifest only counts if it is actually copied into the
+          # bundle; a silent packaging miss is invisible until App Review.
+          if [ ! -f "$APP/PrivacyInfo.xcprivacy" ]; then
+            echo "::error::PrivacyInfo.xcprivacy is missing from the app bundle"
+            ls -la "$APP"
+            exit 1
+          fi
+          echo "Privacy manifest packaged."
 
       - name: Boot simulator
         id: sim

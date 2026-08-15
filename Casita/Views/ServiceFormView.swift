@@ -16,6 +16,7 @@ struct ServiceFormView: View {
     @State private var whatsapp: Bool
     @State private var notes: String
     @State private var address: String
+    @State private var showingContacts = false
 
     init(mode: Mode) {
         self.mode = mode
@@ -50,6 +51,26 @@ struct ServiceFormView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section {
+                    Button {
+                        showingContacts = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "person.crop.circle.badge.plus")
+                                .font(.title3)
+                            Text("Choose from Contacts")
+                                .font(.system(.body, design: .rounded).weight(.medium))
+                            Spacer()
+                        }
+                        .foregroundStyle(Theme.terracotta)
+                        .frame(minHeight: 44)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                } footer: {
+                    Text("Picks the name and phone number from your contacts. You can still edit them below.")
+                }
+
                 Section {
                     TextField("Name — e.g. Ray the plumber", text: $name)
                         .font(.body)
@@ -94,6 +115,18 @@ struct ServiceFormView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Theme.background)
+            // Hosted behind the form so the picker has a controller that is
+            // actually in the window hierarchy to present from.
+            .background(
+                ContactPicker(isPresented: $showingContacts) { pickedName, pickedPhone in
+                    // Never clobber a name already typed; the phone is what
+                    // the user explicitly tapped, so that one always wins.
+                    if name.trimmingCharacters(in: .whitespaces).isEmpty, !pickedName.isEmpty {
+                        name = pickedName
+                    }
+                    phone = pickedPhone
+                }
+            )
             .onAppear { model.errorMessage = nil }
             .navigationTitle(isEditing ? "Edit service" : "New service")
             .navigationBarTitleDisplayMode(.inline)
