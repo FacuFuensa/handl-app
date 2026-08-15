@@ -1,4 +1,4 @@
-import SwiftUI
+﻿import SwiftUI
 
 struct ServicesListView: View {
     @Environment(AppModel.self) private var model
@@ -40,8 +40,10 @@ struct ServicesListView: View {
             }
         }
         .background(Theme.background)
-        .navigationTitle(model.household?.name ?? "Casita")
-        .modifier(HomeToolbar(showingHousehold: $showingHousehold, showingSettings: $showingSettings))
+        // The nav bar caps item height (~36pt of glass), which crops the
+        // symbols. Own header instead, so the glass circles are ours to size.
+        .toolbar(.hidden, for: .navigationBar)
+        .safeAreaInset(edge: .top, spacing: 0) { header }
         .overlay(alignment: .bottom) {
             addServiceIsland
                 .padding(.bottom, 10)
@@ -50,6 +52,57 @@ struct ServicesListView: View {
         .sheet(isPresented: $showingHousehold) { HouseholdView() }
         .sheet(isPresented: $showingSettings) { SettingsView() }
         .refreshable { await model.refreshQuietly() }
+    }
+
+    /// Household name plus the two round glass buttons, sized by us rather
+    /// than by the navigation bar.
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                glassCircleButton(
+                    "person.2.fill", label: "Household and members"
+                ) { showingHousehold = true }
+                Spacer()
+                glassCircleButton(
+                    "gearshape.fill", label: "Settings"
+                ) { showingSettings = true }
+            }
+            Text(model.household?.name ?? "Casita")
+                .font(.system(.largeTitle, design: .rounded).weight(.bold))
+                .foregroundStyle(Theme.ink)
+                .lineLimit(2)
+                .minimumScaleFactor(0.7)
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 6)
+        .padding(.bottom, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.background)
+    }
+
+    @ViewBuilder
+    private func glassCircleButton(
+        _ symbol: String, label: LocalizedStringKey, action: @escaping () -> Void
+    ) -> some View {
+        // 20pt glyph inside a 54pt circle keeps even the wide person.2.fill
+        // clear of the edge.
+        let icon = Image(systemName: symbol)
+            .font(.system(size: 20, weight: .semibold))
+            .foregroundStyle(Theme.terracotta)
+            .frame(width: 54, height: 54)
+
+        if #available(iOS 26.0, *) {
+            Button(action: action) { icon }
+                .buttonStyle(.plain)
+                .glassEffect(.regular.interactive(), in: Circle())
+                .accessibilityLabel(Text(label))
+        } else {
+            Button(action: action) {
+                icon.background(Circle().fill(Theme.card))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(label))
+        }
     }
 
     private var listContent: some View {
@@ -212,7 +265,7 @@ struct ServicesListView: View {
             Text("No services yet")
                 .font(.system(.title2, design: .rounded).weight(.bold))
                 .foregroundStyle(Theme.ink)
-            Text("Add the people who help around the house — plumber, electrician, gardener — with their phone numbers.")
+            Text("Add the people who help around the house â€” plumber, electrician, gardener â€” with their phone numbers.")
                 .font(.system(.body, design: .rounded))
                 .foregroundStyle(Theme.inkSecondary)
                 .multilineTextAlignment(.center)
@@ -221,76 +274,6 @@ struct ServicesListView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
-
-/// The two nav-bar buttons as interactive Liquid Glass circles on iOS 26
-/// (system glass grouping hidden so the circles don't double up); plain
-/// 44pt toolbar buttons before iOS 26.
-private struct HomeToolbar: ViewModifier {
-    /// 44pt (Apple's minimum) reads small next to the large title, and the
-    /// glass ring is barely visible at that size. The nav bar accommodates
-    /// this without clipping.
-    static let glassSize: CGFloat = 52
-
-    @Binding var showingHousehold: Bool
-    @Binding var showingSettings: Bool
-
-    @ViewBuilder
-    func body(content: Content) -> some View {
-        if #available(iOS 26.0, *) {
-            content.toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        showingHousehold = true
-                    } label: {
-                        Image(systemName: "person.2.fill")
-                            .font(.title3.weight(.semibold))
-                            .frame(width: Self.glassSize, height: Self.glassSize)
-                    }
-                    .glassEffect(.regular.interactive(), in: Circle())
-                    .accessibilityLabel(Text("Household and members"))
-                }
-                .sharedBackgroundVisibility(.hidden)
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showingSettings = true
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .font(.title3.weight(.semibold))
-                            .frame(width: Self.glassSize, height: Self.glassSize)
-                    }
-                    .glassEffect(.regular.interactive(), in: Circle())
-                    .accessibilityLabel(Text("Settings"))
-                }
-                .sharedBackgroundVisibility(.hidden)
-            }
-        } else {
-            content.toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        showingHousehold = true
-                    } label: {
-                        Image(systemName: "person.2.fill")
-                            .font(.body.weight(.semibold))
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityLabel(Text("Household and members"))
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showingSettings = true
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .font(.body.weight(.semibold))
-                            .frame(width: 44, height: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .accessibilityLabel(Text("Settings"))
-                }
-            }
-        }
     }
 }
 
