@@ -1,0 +1,4 @@
+job_id,customer_name,customer_phone,city,address,provider_name,provider_phone,category,problem_description,availability_windows,availability_short
+1,Maria Costa,+13055550101,Miami,"1450 SW 8th St, Miami FL","Ray's Plumbing",+13055550111,plumbing,"Water is dripping from the pipe under the kitchen sink. It started two days ago and there's a bucket under it.","Tuesday or Wednesday between 9am and 12pm","Tue or Wed morning"
+2,Maria Costa,+13055550101,Miami,"1450 SW 8th St, Miami FL","Cool Air HVAC",+13055550112,hvac,"The AC in the bedroom is running but not cooling. Annual service is also overdue.","Any weekday after 2pm this week","weekday afternoons"
+3,Facundo Fuensalida,+13055550102,Miami,"820 NE 2nd Ave, Miami FL","Delgado Electric",+13055550113,electrical,"Two outlets in the living room stopped working. The breaker doesn't look tripped.","Thursday or Friday, 8am to 11am","Thu or Fri morning"

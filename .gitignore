@@ -9,6 +9,13 @@
 # Secrets
 /private/
 *.p8
+/pilot/.env
+
+# Pilot data. This repo is PUBLIC, and these hold real names, addresses, phone
+# numbers and recorded conversations with third parties who did not consent to
+# being published. Only the .example file is tracked.
+/pilot/jobs.csv
+/pilot/results/
 
 # OS noise
 .DS_Store
