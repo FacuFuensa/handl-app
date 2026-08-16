@@ -86,6 +86,33 @@ card, which is not something I can do for you.
    consent from both parties to record. The opening does identification first,
    then recording consent, with a real pause.
 
+## Running it
+
+```
+py -3 run.py preview              # what the agent will say, per job. free.
+py -3 run.py preview --full       # include the system prompt
+py -3 run.py call --job 3 --yes   # dial one job
+py -3 run.py call --all --yes     # dial every pending job, one at a time
+py -3 run.py report               # the number this exists to produce
+```
+
+Standard library only — no `pip install`. Copy `jobs.example.csv` to
+`jobs.csv` and fill it with real work, then run `preview` and read the opening
+line out loud. If it sounds evasive, fix `agent.md`; the script lives there,
+and `run.py` reads it from that file so the two cannot drift.
+
+Guards that will stop you, on purpose:
+
+- **Nothing dials without `--yes`.** The confirmation lists every number first.
+- **No calls outside Miami business hours**, or on weekends. A 9pm no-answer
+  measures nothing. `--ignore-hours` overrides it.
+- **Two attempts per job, at least three hours apart.** The provider was under
+  a sink, not ignoring you; redialling immediately just burns the number.
+- **One call at a time, 45 seconds between them.** A burst of short calls from
+  an unknown number is the exact pattern carriers score as spam.
+- Templates are checked against `jobs.csv` before anything dials, so no
+  provider ever hears the words "on behalf of {{customer_name}}".
+
 ## Reading the result
 
 - **Above 50% booked** — the product works. Price it and build it.

@@ -119,11 +119,15 @@ more than 80% of people prefer a text back to a voicemail, and between 75% and
 
 ## SMS fallback
 
+Kept to plain ASCII on purpose: one em dash or accented character switches the
+whole message to UCS-2 encoding, which halves the characters per segment and
+turns a 3-part text into a 6-part one.
+
 ```
-Hi {{provider_name}} — this is a message on behalf of {{customer_name}}, a
+Hi {{provider_name}}, this is a message on behalf of {{customer_name}}, a
 customer of yours. They need {{category}}: {{problem_description_short}}.
 Available {{availability_short}}. Address: {{address}}. Reply here with a time
-that works and we'll lock it in. — sent by their scheduling assistant
+that works and we'll lock it in. Sent by their scheduling assistant.
 ```
 
 ## Open question for the pilot to answer
