@@ -67,7 +67,7 @@ struct ServicesListView: View {
                     "gearshape.fill", label: "Settings"
                 ) { showingSettings = true }
             }
-            Text(model.household?.name ?? "Casita")
+            Text(model.household?.name ?? "Handl")
                 .font(.system(.largeTitle, design: .rounded).weight(.bold))
                 .foregroundStyle(Theme.ink)
                 .lineLimit(2)

@@ -6,7 +6,7 @@ struct HouseholdView: View {
     @State private var confirmingLeave = false
 
     private var inviteMessage: String {
-        String(localized: "Join our home in Casita! Household code: \(model.household?.inviteCode ?? "")")
+        String(localized: "Join our home in Handl! Household code: \(model.household?.inviteCode ?? "")")
     }
 
     var body: some View {

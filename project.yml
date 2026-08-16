@@ -1,4 +1,4 @@
-name: Casita
+name: Handl
 options:
   bundleIdPrefix: com.facufuensa
   deploymentTarget:
@@ -10,18 +10,18 @@ packages:
     url: https://github.com/supabase/supabase-swift
     exactVersion: "2.55.1"
 targets:
-  Casita:
+  Handl:
     type: application
     platform: iOS
     sources:
-      - path: Casita
+      - path: Handl
     dependencies:
       - package: Supabase
         product: Supabase
     info:
-      path: Casita/Info.plist
+      path: Handl/Info.plist
       properties:
-        CFBundleDisplayName: Casita
+        CFBundleDisplayName: Handl
         CFBundleDevelopmentRegion: en
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
@@ -33,8 +33,11 @@ targets:
         SupabaseAnonKey: $(SUPABASE_ANON_KEY)
     settings:
       base:
+        # Kept from the app's original name. Changing it would orphan the App
+        # Store Connect record and every TestFlight build under it; it is
+        # never shown to users.
         PRODUCT_BUNDLE_IDENTIFIER: com.facufuensa.casita
-        PRODUCT_NAME: Casita
+        PRODUCT_NAME: Handl
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
         DEVELOPMENT_TEAM: RS6J29JLPS
@@ -46,10 +49,10 @@ targets:
         SUPABASE_URL: ""
         SUPABASE_ANON_KEY: ""
 schemes:
-  Casita:
+  Handl:
     build:
       targets:
-        Casita: all
+        Handl: all
     run:
       config: Debug
     archive:

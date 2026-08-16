@@ -66,7 +66,7 @@ struct HouseholdGateView: View {
         .sheet(isPresented: $showingCreate) { CreateHouseholdSheet() }
         .sheet(isPresented: $showingJoin) { JoinHouseholdSheet() }
         .confirmationDialog(
-            Text("Sign out of Casita?"),
+            Text("Sign out of Handl?"),
             isPresented: $confirmingSignOut,
             titleVisibility: .visible
         ) {

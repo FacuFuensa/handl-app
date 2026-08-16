@@ -22,8 +22,8 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild \
-            -project Casita.xcodeproj \
-            -scheme Casita \
+            -project Handl.xcodeproj \
+            -scheme Handl \
             -configuration Debug \
             -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath build \
@@ -44,7 +44,7 @@ jobs:
 
       - name: Verify simulator product
         run: |
-          APP="build/Build/Products/Debug-iphonesimulator/Casita.app"
+          APP="build/Build/Products/Debug-iphonesimulator/Handl.app"
           if [ ! -d "$APP" ]; then
             echo "::error::Simulator .app not found at $APP"
             find build/Build/Products -maxdepth 2 -name "*.app" || true
@@ -75,7 +75,7 @@ jobs:
           xcrun simctl bootstatus "$UDID" -b
 
       - name: Install app
-        run: xcrun simctl install "${{ steps.sim.outputs.udid }}" build/Build/Products/Debug-iphonesimulator/Casita.app
+        run: xcrun simctl install "${{ steps.sim.outputs.udid }}" build/Build/Products/Debug-iphonesimulator/Handl.app
 
       - name: Capture screenshots
         run: |
@@ -83,7 +83,7 @@ jobs:
           mkdir -p shots
           shoot () { # $1 = language, $2 = screen
             xcrun simctl launch "$UDID" com.facufuensa.casita \
-              -CasitaDemo -CasitaScreen "$2" -AppleLanguages "($1)"
+              -HandlDemo -HandlScreen "$2" -AppleLanguages "($1)"
             sleep 6
             xcrun simctl io "$UDID" screenshot "shots/$1-$2.png"
             xcrun simctl terminate "$UDID" com.facufuensa.casita || true

@@ -1,4 +1,4 @@
-# Casita — Design Spec (2026-08-14)
+# Handl — Design Spec (2026-08-14)
 
 ## What it is
 
@@ -8,7 +8,7 @@ their phone numbers, so anyone in the household can find and call them in
 seconds. Built for the owner's uncle and his wife: two users, older adults.
 **UI language: English** (per the owner, 2026-08-14). A full Spanish
 translation is parked in `docs/l10n/Localizable.es-backup.xcstrings` and can
-be restored into `Casita/Localizable.xcstrings` later if wanted.
+be restored into `Handl/Localizable.xcstrings` later if wanted.
 
 ## Core flows
 
@@ -25,15 +25,15 @@ be restored into `Casita/Localizable.xcstrings` later if wanted.
 
 ## Architecture
 
-- `CasitaApp` → `RootRouter` → state-driven root: `loading` / `signedOut` /
+- `HandlApp` → `RootRouter` → state-driven root: `loading` / `signedOut` /
   `noHousehold` / `ready`.
 - `AppModel` — single `@MainActor @Observable` store.
 - `Backend` protocol (async) with two implementations:
   - `SupabaseBackend` — supabase-swift **2.55.1 exact** (SPM).
-  - `DemoBackend` (actor) — seeded in-memory data. Selected by `-CasitaDemo`
+  - `DemoBackend` (actor) — seeded in-memory data. Selected by `-HandlDemo`
     launch arg, used by CI screenshots and as a clearly-bannered fallback when
     the build has no Supabase config.
-- `-CasitaScreen <auth|gate|home|detail|form|household>` renders one screen
+- `-HandlScreen <auth|gate|home|detail|form|household>` renders one screen
   directly with demo data — deterministic CI screenshots, inert in production
   (launch args can't be injected on device).
 - Supabase URL/anon key come from Info.plist keys populated by build settings
@@ -87,7 +87,7 @@ Warm, flat, spacious (density 3/10, motion 2/10 per design-system query).
   itself uploads to App Store Connect. Also needs `SUPABASE_URL` /
   `SUPABASE_ANON_KEY` secrets; fails fast if any secret is missing.
 - Public repo `casita-app` (free unlimited Actions minutes; private macOS
-  bills 10x). No secrets in git; `Casita.xcodeproj` is generated, not
+  bills 10x). No secrets in git; `Handl.xcodeproj` is generated, not
   committed.
 
 ## Out of scope for v1 (noted for later)

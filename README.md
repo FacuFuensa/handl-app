@@ -1,4 +1,4 @@
-# Casita
+# Handl
 
 iOS app (SwiftUI, iOS 17+) for a household's shared directory of service
 providers — plumber, electrician, gas fitter — with one-tap call and WhatsApp.
@@ -11,9 +11,13 @@ XcodeGen in CI** (never committed), simulator builds verify compilation, and
 TestFlight uploads use `xcodebuild` cloud signing with an App Store Connect
 API key.
 
-- Spec: `docs/superpowers/specs/2026-08-14-casita-design.md`
+- Spec: `docs/superpowers/specs/2026-08-14-handl-design.md`
 - Bundle ID: `com.facufuensa.casita` · Team: `RS6J29JLPS`
 - Backend: Supabase (schema in `supabase/migrations/0001_init.sql`)
+
+The app was called Casita until the naming study; the bundle ID still says
+`casita` because changing it would orphan the App Store Connect record and
+every TestFlight build under it. It is never shown to users.
 
 ## Workflows
 
@@ -22,7 +26,7 @@ API key.
 Runs on every push to `main`. Compiles the app for the iOS simulator
 (unsigned), boots an iPhone simulator, and captures screenshots of every
 screen using the demo backend
-(`-CasitaDemo -CasitaScreen <name>` launch arguments). Screenshots land in
+(`-HandlDemo -HandlScreen <name>` launch arguments). Screenshots land in
 the run's artifacts.
 
 ### `ios-testflight.yml` — archive + upload to TestFlight (manual)
@@ -45,11 +49,15 @@ App Store Connect → Users and Access → Integrations → App Store Connect AP
 
 ### 2. App record in App Store Connect
 
-Apps → **+** → New App → iOS, name e.g. "Casita — Home Services",
-primary language English (U.S.), bundle ID `com.facufuensa.casita` (register it at
+Already done: the record exists as Apple ID `6801680992`. Its listing name
+still reads "Casita: Home Services" and needs renaming in App Store Connect
+to "Handl: Home Services AI" — the bare name "Handl" is taken on the store.
+
+To recreate it from scratch: Apps → **+** → New App → iOS, primary language
+English (U.S.), bundle ID `com.facufuensa.casita` (register it at
 developer.apple.com/account → Identifiers if it's not in the dropdown — or
 run the TestFlight workflow once first: automatic signing registers the
-bundle ID for you), SKU `casita`.
+bundle ID for you).
 
 ### 3. Supabase project → 2 secrets
 
@@ -64,11 +72,11 @@ Authentication → Sign In / Up → Email → turn **off** "Confirm email".
 
 ## How the app is wired
 
-- `Casita/App` — `CasitaApp` (entry + screenshot routing), `AppModel`
+- `Handl/App` — `HandlApp` (entry + screenshot routing), `AppModel`
   (single observable store), `Theme`.
-- `Casita/Backend` — `Backend` protocol; `SupabaseBackend` (supabase-swift
+- `Handl/Backend` — `Backend` protocol; `SupabaseBackend` (supabase-swift
   2.55.1, pinned exact); `DemoBackend` (seeded, used by previews/CI/fallback).
-- `Casita/Views` — Auth, HouseholdGate (create/join), ServicesList,
+- `Handl/Views` — Auth, HouseholdGate (create/join), ServicesList,
   ServiceDetail, ServiceForm, Household (invite code + members), Settings.
 - Supabase URL/key enter the build as `SUPABASE_URL` / `SUPABASE_ANON_KEY`
   build settings → Info.plist. A build without them runs in demo mode with a

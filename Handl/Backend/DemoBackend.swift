@@ -1,7 +1,7 @@
 import Foundation
 
 /// Seeded in-memory backend. Used by SwiftUI previews, CI screenshot runs
-/// (-CasitaDemo launch argument) and as the fallback when a build ships
+/// (-HandlDemo launch argument) and as the fallback when a build ships
 /// without Supabase configuration (a "Demo" banner makes that state visible).
 actor DemoBackend: Backend {
     nonisolated let isDemo = true

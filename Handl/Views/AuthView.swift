@@ -103,7 +103,7 @@ struct AuthView: View {
                 .frame(width: 96, height: 96)
                 .background(Theme.terracottaFill, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
                 .accessibilityHidden(true)
-            Text("Casita")
+            Text("Handl")
                 .font(.system(size: 40, weight: .bold, design: .rounded))
                 .foregroundStyle(Theme.ink)
             Text("Your home's services and phone numbers, shared with your family")

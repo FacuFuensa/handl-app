@@ -58,10 +58,10 @@ jobs:
           # GitHub only masks the console stream, not files we upload.
           redact () { sed -e "s|$SUPABASE_ANON_KEY|<redacted>|g"; }
           xcodebuild archive \
-            -project Casita.xcodeproj \
-            -scheme Casita \
+            -project Handl.xcodeproj \
+            -scheme Handl \
             -destination 'generic/platform=iOS' \
-            -archivePath build/Casita.xcarchive \
+            -archivePath build/Handl.xcarchive \
             -allowProvisioningUpdates \
             -authenticationKeyPath "$PWD/private/AuthKey.p8" \
             -authenticationKeyID "$ASC_KEY_ID" \
@@ -81,7 +81,7 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild -exportArchive \
-            -archivePath build/Casita.xcarchive \
+            -archivePath build/Handl.xcarchive \
             -exportOptionsPlist ci/exportOptions.plist \
             -exportPath build/export \
             -allowProvisioningUpdates \

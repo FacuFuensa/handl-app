@@ -74,7 +74,7 @@ struct SettingsView: View {
 
                 Section {
                 } footer: {
-                    Text("Casita \(appVersion)")
+                    Text("Handl \(appVersion)")
                         .frame(maxWidth: .infinity)
                         .multilineTextAlignment(.center)
                 }
@@ -97,7 +97,7 @@ struct SettingsView: View {
                 savedName = false
             }
             .confirmationDialog(
-                Text("Sign out of Casita?"),
+                Text("Sign out of Handl?"),
                 isPresented: $confirmingSignOut,
                 titleVisibility: .visible
             ) {

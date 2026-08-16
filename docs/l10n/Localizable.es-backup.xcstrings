@@ -52,11 +52,11 @@
     "Car" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Auto" } } }
     },
-    "Casita" : {
-      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Casita" } } }
+    "Handl" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Handl" } } }
     },
-    "Casita %@" : {
-      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Casita %@" } } }
+    "Handl %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Handl %@" } } }
     },
     "Category" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Categoría" } } }
@@ -151,8 +151,8 @@
     "Join household" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Unirse al hogar" } } }
     },
-    "Join our home in Casita! Household code: %@" : {
-      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Sumate a nuestro hogar en Casita! Código: %@" } } }
+    "Join our home in Handl! Household code: %@" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Sumate a nuestro hogar en Handl! Código: %@" } } }
     },
     "Join with a code" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Unirse con un código" } } }
@@ -250,8 +250,8 @@
     "Sign out" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Cerrar sesión" } } }
     },
-    "Sign out of Casita?" : {
-      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Cerrar sesión de Casita?" } } }
+    "Sign out of Handl?" : {
+      "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Cerrar sesión de Handl?" } } }
     },
     "Start fresh and invite your family with a code" : {
       "localizations" : { "es" : { "stringUnit" : { "state" : "translated", "value" : "Empezá de cero e invitá a tu familia con un código" } } }

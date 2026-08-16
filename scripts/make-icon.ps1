@@ -33,7 +33,7 @@ $g.FillEllipse($bgBrush, 464, 608, 96, 96)
 $g.FillRectangle($bgBrush, 464, 656, 96, 144)
 
 $g.Dispose()
-$out = Join-Path $PSScriptRoot "..\Casita\Assets.xcassets\AppIcon.appiconset\icon-1024.png"
+$out = Join-Path $PSScriptRoot "..\Handl\Assets.xcassets\AppIcon.appiconset\icon-1024.png"
 $bmp.Save($out, [System.Drawing.Imaging.ImageFormat]::Png)
 $bmp.Dispose()
 Write-Output "Icon written to $out"

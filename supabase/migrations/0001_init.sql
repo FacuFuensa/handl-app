@@ -1,4 +1,4 @@
--- Casita — initial schema
+-- Handl — initial schema
 -- Run this in the Supabase SQL editor (or `supabase db push`) on a fresh project.
 
 -- ─── Tables ────────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// -CasitaScreen <name> renders a single screen with demo data. Used by the
+/// -HandlScreen <name> renders a single screen with demo data. Used by the
 /// CI screenshot pipeline; inert in production (launch arguments cannot be
 /// injected into an App Store build).
 enum DemoScreen: String {
@@ -8,7 +8,7 @@ enum DemoScreen: String {
 
     static func fromLaunchArguments() -> DemoScreen? {
         let args = ProcessInfo.processInfo.arguments
-        guard let index = args.firstIndex(of: "-CasitaScreen"), index + 1 < args.count else {
+        guard let index = args.firstIndex(of: "-HandlScreen"), index + 1 < args.count else {
             return nil
         }
         return DemoScreen(rawValue: args[index + 1])
@@ -112,7 +112,7 @@ struct HomeNavigationView: View {
 }
 
 @main
-struct CasitaApp: App {
+struct HandlApp: App {
     private let screenOverride = DemoScreen.fromLaunchArguments()
     @State private var model: AppModel
     @Environment(\.scenePhase) private var scenePhase

@@ -23,7 +23,7 @@ final class AppModel {
     init(backend: Backend? = nil) {
         if let backend {
             self.backend = backend
-        } else if ProcessInfo.processInfo.arguments.contains("-CasitaDemo") {
+        } else if ProcessInfo.processInfo.arguments.contains("-HandlDemo") {
             self.backend = DemoBackend(startSignedIn: true)
         } else if let config = SupabaseConfig.load() {
             self.backend = SupabaseBackend(config: config)
